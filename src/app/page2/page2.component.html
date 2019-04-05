@@ -1,0 +1,46 @@
+<h1 class="mat-h1">Country Detail</h1>
+<app-country-info [country]="country"></app-country-info>
+<mat-card class="card" *ngIf="country">
+  <mat-card-content>
+    <mat-card-title-group>
+      <mat-card-title>
+        <strong class="country-code">
+          {{country.CountryCode ? country.CountryCode : "N/A"}}
+        </strong>
+        {{country.CountryName}}
+      </mat-card-title>
+      <mat-card-subtitle>Capital city: {{country.CapitalName}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <p>
+      Country code: {{country.CountryCode ? country.CountryCode : "N/A"}}
+    </p>
+    <p>Lat: {{country.CapitalLatitude}} / Lng: {{country.CapitalLongitude}}</p>
+    <p>Continent name: {{country.ContinentName}}</p>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="weather" >
+  <h1 class="mat-h1">Daily Weather</h1>
+  
+  
+  <!-- weather card -->
+  <mat-card-content *ngFor="let weather of weather.daily.data;let i = index">
+      <mat-card class="card">
+    <mat-card-title-group>
+      <mat-card-title>
+          <strong>
+              Day:{{i}}
+            </strong>
+      </mat-card-title>
+      <mat-card-subtitle>{{weather.summary}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <p>
+      Temp min/max: {{weather.temperatureLow}}/{{weather.temperatureHigh}}celcius
+    </p>
+    <p>Pressure: {{weather.pressure}}</p>
+    <p>Humidity: {{weather.humidity}}</p>
+  </mat-card>
+  </mat-card-content>
+
+
+</div>
